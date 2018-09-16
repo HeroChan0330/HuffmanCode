@@ -21,4 +21,10 @@ public class Utils {
 		}
 		return string;
 	}
+	public static String fileRepostfix(String fileFullName){
+		int dotIndex=fileFullName.lastIndexOf('.');
+		if(dotIndex<=0) dotIndex=fileFullName.length();
+		String ret=fileFullName.substring(0,dotIndex)+".HC";
+		return ret;
+	}
 }

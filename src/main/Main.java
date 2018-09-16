@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 
+import javax.naming.spi.DirectoryManager;
+
 public class Main {
 	static int mode=0;//0±àÂë 1½âÂë
 	static String targetFile=null,srcFile=null;
@@ -11,8 +13,7 @@ public class Main {
 		if(args.length==0) return;
 		
 		if(!cmdDecoder(args))return;
-		
-//		String src=args[0],temp="output.dat",target="2.mp3";
+
 		if(mode==0){
 			try {
 				FileInputStream inputStream=new FileInputStream(new File(srcFile));
@@ -71,7 +72,8 @@ public class Main {
 		if(targetFile==null&&srcFile==null){
 			return false;
 		}else if(targetFile==null){
-			targetFile="_"+srcFile;
+//			targetFile="_"+srcFile;
+			targetFile=Utils.fileRepostfix(srcFile);
 			System.out.println(targetFile);
 		}
 		return true;
